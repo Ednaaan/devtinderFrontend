@@ -10,8 +10,9 @@ import { BASE_URL } from './utils/constant';
 
 const Login = () => {
 
-  const[emailId, setEmailId] = useState("");
-  const[password, setPassword] = useState("");
+  const[emailId, setEmailId] = useState("Atika@gmaill.com");
+  const[password, setPassword] = useState("Atika@123");
+  const[error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -27,10 +28,12 @@ const Login = () => {
       withCredentials:true
     }
     );
+    // console.log(res.data);  
     dispatch(addUser(res.data));
     return navigate("/");
       
     } catch (err) {
+      setError(err?.response?.data || "Something went wrong");
       console.log(err)
       
     }
@@ -58,7 +61,7 @@ const Login = () => {
 </label>
 <label className="input input-bordered flex items-center gap-2">
   
-  <input type="text" className="label" placeholder="password"
+  <input type="text" className="label" placeholder="Password"
   
   value={password}
   onChange={(e)=>{
@@ -68,8 +71,7 @@ const Login = () => {
   
   />
   </label>
-
-    
+    <p className='text-red-600'>{error}</p>
     <div className="card-actions justify-center my-5">
       <button className="btn btn-primary" onClick={handleLogin}>Login</button>
     </div>
