@@ -26,7 +26,8 @@ const handleLogout = async() => {
     <div>
          <div className="navbar bg-base-300">
   <div className="flex-1">
-    <Link to="/" className="btn btn-ghost text-xl shadow-sm">TwiNNing❤️</Link>
+    <Link to="/" className="btn btn-ghost text-xl shadow-sm">Swipe❤️</Link>
+    
   </div>
   {user && (
     <div className="flex-none gap-2">
@@ -50,6 +51,7 @@ const handleLogout = async() => {
           </Link>
         </li>
         <li><Link to="/connections">Connections</Link></li>
+        <li><Link to="/requests">Requests</Link></li>
         <li><a onClick={handleLogout}>Logout</a></li>
       </ul>
     </div>
